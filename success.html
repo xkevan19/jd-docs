@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Submitted | Support Center</title>
+    <script src="https://unpkg.com/tailwindcss-cdn@3.4.10/tailwindcss-with-all-plugins.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(to right, #4f46e5, #7077FF);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #7077FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #7077FF, #4f46e5);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-gradient:hover::before {
+            left: 0;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#0f1116] text-white min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="w-full bg-[#0f1116] p-6 border-b-[1px] border-gray-800 relative z-10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28"
+                    class="flex-shrink-0">
+                    <path
+                        d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9zM11 8a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2h-1V9a1 1 0 0 0-1-1z" />
+                </svg>
+                <h1 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Support Center</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#" class="text-white hover:text-blue-100 font-medium transition">Documentation</a>
+                <a href="#"
+                    class="px-16 py-2 bg-[#282c36] text-white border-[1px] border-gray-800 font-medium rounded-full hover:bg-[#0f1116] transition">Log
+                    In</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-[#1A1D26] rounded-2xl shadow-xl p-8 border border-gray-800">
+            <div class="text-center">
+                <!-- Success icon -->
+                <div
+                    class="mx-auto w-24 h-24 rounded-full bg-green-900/20 flex items-center justify-center mb-6 pulse-animation">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+
+                <h1 class="text-3xl font-bold mb-2">Request Submitted!</h1>
+                <p class="text-gray-400 mb-8">Your support request has been successfully received. Our team will review
+                    your request and get back to you as soon as possible.</p>
+
+                <!-- Ticket details -->
+                <div class="bg-[#23262F] p-4 rounded-lg mb-8 text-left">
+                    <h2 class="font-medium text-gray-300 mb-2">Request details:</h2>
+                    <p class="text-sm text-gray-400 mb-1">• A confirmation email has been sent to your inbox</p>
+                    <p class="text-sm text-gray-400">• You'll receive updates via email as we process your request</p>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html"
+                        class="btn-gradient px-6 py-3 rounded-lg border border-[#7077FF] text-white font-medium hover:shadow-lg transition duration-300">
+                        Return to Docs
+                    </a>
+                    <a href="https://jesiahmediadashboard.netlify.app/"
+                        class="px-6 py-3 bg-[#23262F] rounded-lg border border-gray-700 text-gray-300 font-medium hover:bg-[#2a2d36] transition duration-300">
+                        Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

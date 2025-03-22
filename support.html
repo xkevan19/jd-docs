@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/tailwindcss-cdn@3.4.10/tailwindcss-with-all-plugins.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#0037FF',
+                        'secondary-blue': '#7077FF',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #0F1116;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0037FF 0%, #7077FF 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0037FF 0%, #7077FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-border:focus {
+            border-color: #0037FF;
+            box-shadow: 0 0 0 3px rgba(112, 119, 255, 0.3);
+            outline: none;
+        }
+
+        .gradient-hover:hover {
+            background: linear-gradient(135deg, #0037FF 0%, #7077FF 100%);
+            opacity: 0.9;
+        }
+
+        .sticky-column {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #7077FF #1F2028;
+        }
+
+        .sticky-column::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sticky-column::-webkit-scrollbar-track {
+            background: #1F2028;
+        }
+
+        .sticky-column::-webkit-scrollbar-thumb {
+            background: #7077FF;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-column {
+                position: static;
+                height: auto;
+                overflow-y: visible;
+            }
+        }
+
+        .form-input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7077FF;
+            z-index: 10;
+        }
+
+        .input-with-icon {
+            padding-left: 40px !important;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 55, 255, 0.1), 0 10px 10px -5px rgba(112, 119, 255, 0.05);
+        }
+
+        .custom-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237077FF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-size: 20px;
+            background-position: right 10px center;
+            background-repeat: no-repeat;
+            padding-right: 40px;
+            appearance: none;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            height: 60px;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed #4B5563;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-label:hover {
+            border-color: #7077FF;
+            background-color: rgba(112, 119, 255, 0.05);
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-900 font-inter w-full">
+    <header class="w-full bg-[#0f1116] p-3 border-b-[1px] border-gray-800 relative z-10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28"
+                    class="flex-shrink-0">
+                    <path
+                        d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9zM11 8a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2h-1V9a1 1 0 0 0-1-1z" />
+                </svg>
+                <h1 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Support Center</h1>
+            </div>
+
+            <a href="https://jesiahmediadashboard.netlify.app/" class="md:hidden flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="hover:text-blue-100 transition">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://github.com/xkevan19/jd-docs" class="text-white hover:text-blue-100 font-medium transition">Back To Docs</a>
+                <a href="https://jesiahmediadashboard.netlify.app/"
+                    class="px-16 py-2 bg-[#282c36] text-white border-[1px] border-gray-800 font-medium rounded-full hover:bg-[#0f1116] transition">Log
+                    In</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-col md:flex-row w-full">
+        <!-- Support Request Form (Sticky) -->
+        <div class="w-full md:w-1/2 bg-[#1A1D26] sticky-column p-8 border-r border-[#2C2F3B] shadow-xl">
+            <div class="max-w-lg mx-auto">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">Submit a Support Request</h2>
+                    <p class="text-gray-400">Please fill out the form below with details about your issue</p>
+                </div>
+
+                <form name="support-request" method="POST" data-netlify="true" action="/success" class="space-y-6"
+                    enctype="multipart/form-data">
+                    <input type="hidden" name="form-name" value="support-request" />
+
+                    <!-- Name field -->
+                    <div class="relative">
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
+                        <div class="relative">
+                            <svg class="form-input-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <input type="text" id="name" name="name" required placeholder="John Doe"
+                                class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border input-with-icon">
+                        </div>
+                    </div>
+
+                    <!-- Email field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Your Email</label>
+                        <div class="relative">
+                            <svg class="form-input-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com"
+                                class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border input-with-icon">
+                        </div>
+                    </div>
+
+                    <!-- Subject field -->
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                        <div class="relative">
+                            <svg class="form-input-icon absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                                <line x1="9" y1="20" x2="15" y2="20"></line>
+                                <line x1="12" y1="4" x2="12" y2="20"></line>
+                            </svg>
+                            <input type="text" id="subject" name="subject" required
+                                placeholder="Brief description of your issue"
+                                class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border input-with-icon">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Category field -->
+                        <div>
+                            <label for="category" class="block text-sm font-medium text-gray-300 mb-2">Category</label>
+                            <select id="category" name="category" required
+                                class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border custom-select">
+                                <option value="" class="bg-[#23262F]">--Select Category--</option>
+                                <option value="bug" class="bg-[#23262F]">Bug Report</option>
+                                <option value="feature" class="bg-[#23262F]">Feature Request</option>
+                                <option value="question" class="bg-[#23262F]">General Question</option>
+                                <option value="account" class="bg-[#23262F]">Account Issue</option>
+                                <option value="other" class="bg-[#23262F]">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Urgency field -->
+                        <div>
+                            <label for="urgency" class="block text-sm font-medium text-gray-300 mb-2">Urgency</label>
+                            <select id="urgency" name="urgency" required
+                                class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border custom-select">
+                                <option value="" class="bg-[#23262F]">--Select Urgency--</option>
+                                <option value="low" class="bg-[#23262F]">Low</option>
+                                <option value="medium" class="bg-[#23262F]">Medium</option>
+                                <option value="high" class="bg-[#23262F]">High</option>
+                                <option value="critical" class="bg-[#23262F]">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Description field -->
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-gray-300 mb-2">Description of
+                            Issue</label>
+                        <textarea id="description" name="description" rows="5" required
+                            placeholder="Please provide detailed information about your issue..."
+                            class="w-full px-4 py-3 bg-[#23262F] border border-[#33363F] text-white rounded-lg focus:outline-none gradient-border"></textarea>
+                    </div>
+
+                    <!-- Attachment field -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Attachment (Optional)</label>
+                        <div class="file-upload-wrapper">
+                            <label for="attachment" class="file-upload-label">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="mr-2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    <span class="text-gray-400">Choose a file or drag & drop</span>
+                                </div>
+                            </label>
+                            <input type="file" id="attachment" name="attachment" class="file-upload-input">
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit"
+                            class="w-full gradient-bg text-white font-medium py-3 px-4 rounded-lg transition duration-300 ease-in-out hover:opacity-90 transform hover:scale-[0.99] shadow-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="mr-2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Common Issues and Solutions (Scrollable) -->
+        <div class="w-full md:w-1/2 bg-[#0F1116] p-8 md:p-12">
+            <div class="max-w-2xl mx-auto">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">Common Issues & Solutions</h2>
+                    <p class="text-gray-400">Browse through our frequently reported issues and their solutions</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Issue 1 -->
+                    <div class="bg-[#1A1D26] p-6 rounded-xl shadow-lg card-hover border-l-4 border-primary-blue">
+                        <h3 class="text-lg font-semibold gradient-text mb-3">Account Login Problems</h3>
+                        <p class="text-gray-300 mb-3">Unable to access your account? Try these solutions:</p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Reset your password using the "Forgot Password" link</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Clear your browser cache and cookies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Try using a different browser</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Ensure your account hasn't been suspended</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Issue 2 -->
+                    <div class="bg-[#1A1D26] p-6 rounded-xl shadow-lg card-hover border-l-4 border-secondary-blue">
+                        <h3 class="text-lg font-semibold gradient-text mb-3">Payment Processing Issues</h3>
+                        <p class="text-gray-300 mb-3">If you're experiencing problems with payments:</p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Verify your payment method is up to date</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Check if your card hasn't expired</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Ensure your billing address matches your card details</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Contact your bank to see if transactions are being blocked</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Issue 3 -->
+                    <div class="bg-[#1A1D26] p-6 rounded-xl shadow-lg card-hover border-l-4 border-blue-400">
+                        <h3 class="text-lg font-semibold gradient-text mb-3">Application Performance</h3>
+                        <p class="text-gray-300 mb-3">If the application is running slowly:</p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Update to the latest version of the software</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Restart the application and your device</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Check your internet connection speed</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Close other resource-intensive applications</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- More issues... -->
+                    <div class="bg-[#1A1D26] p-6 rounded-xl shadow-lg card-hover border-l-4 border-indigo-500">
+                        <h3 class="text-lg font-semibold gradient-text mb-3">Data Sync Problems</h3>
+                        <p class="text-gray-300 mb-3">If your data isn't syncing properly:</p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Check your internet connection</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Verify sync is enabled in settings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Force a manual sync through the application</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="#7077FF" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="mr-2 mt-1 flex-shrink-0">
+                                    <polyline points="9 11 12 14 22 4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Ensure you haven't exceeded storage limits</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact info -->
+                    <div class="mt-8 p-6 rounded-lg border border-dashed border-[#7077FF] bg-[#1A1D26] shadow-lg">
+                        <div class="flex items-start">
+                            <svg class="w-5 h-5 mt-1 mr-3 text-[#7077FF]" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div>
+                                <h3 class="font-semibold text-white text-lg mb-2">Need Immediate Help?</h3>
+                                <p class="text-neutral-300 text-sm mb-3">Our support team is available Monday-Friday,
+                                    9am-5pm ET.</p>
+                                <div class="flex items-center mt-4">
+                                    <svg class="w-4 h-4 mr-2 text-[#7077FF]" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    <a href="mailto:support@example.com"
+                                        class="text-[#7077FF] hover:text-[#8A90FF] font-medium transition-colors duration-200">support@example.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
